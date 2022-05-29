@@ -19,7 +19,7 @@ function CreateArea(props) {
     }
 
     function handleClick(event){
-        props.addNote(newNote);
+        newNote.title.length > 0 ? props.addNote(newNote): alert("Enter Title");
         setNewNote({title: "", content: ""});
         event.preventDefault();
     }
@@ -45,7 +45,7 @@ function CreateArea(props) {
             onChange={handleChange}
             value={newNote.content}
         />
-        <button onClick={handleClick}>Add</button>
+        <button onClick={handleClick}>+</button>
       </form>
     </div>
   );

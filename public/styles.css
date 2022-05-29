@@ -23,6 +23,28 @@ header h1 {
   font-family: "McLaren", cursive;
   font-weight: 200;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.about {
+  float:right;
+}
 
 footer {
   position: absolute;
@@ -66,6 +88,7 @@ footer p {
   cursor: pointer;
   outline: none;
 }
+
 
 form {
   position: relative;

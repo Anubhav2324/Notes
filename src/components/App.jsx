@@ -1,8 +1,10 @@
 import React, {useState} from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import About from "./About";
 
 
 
@@ -27,17 +29,31 @@ function App() {
   return (
     <div>
       <Header />
-      <CreateArea addNote={addNote}/>
+      <Router>
+        <Routes>
 
-      {noteList.map((noteValue,index)=>(
-        <Note 
-          key={index}
-          title={noteValue.title}
-          content={noteValue.content}
-          id={index}
-          deleteNote={deleteNote}
-        />
-    ))}
+          <Route exact path="/">
+            <CreateArea addNote={addNote}/>
+
+            {noteList.map((noteValue,index)=>(
+              <Note 
+                key={index}
+                title={noteValue.title}
+                content={noteValue.content}
+                id={index}
+                deleteNote={deleteNote}
+              />
+            ))}
+          </Route>
+
+          <Route path="/about">
+            <About />  
+          </Route>
+
+        </Routes>
+      </Router>
+    
+
       <Footer />
     </div>
   );
