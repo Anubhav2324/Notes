@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
@@ -29,10 +28,6 @@ function App() {
   return (
     <div>
       <Header />
-      <Router>
-        <Routes>
-
-          <Route exact path="/">
             <CreateArea addNote={addNote}/>
 
             {noteList.map((noteValue,index)=>(
@@ -44,14 +39,9 @@ function App() {
                 deleteNote={deleteNote}
               />
             ))}
-          </Route>
 
-          <Route path="/about">
             <About />  
-          </Route>
-
-        </Routes>
-      </Router>
+ 
     
 
       <Footer />

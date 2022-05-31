@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import axios from "axios";
 
 function CreateArea(props) {
 
@@ -17,12 +18,36 @@ function CreateArea(props) {
             }
         })
     }
-
-    function handleClick(event){
-        newNote.title.length > 0 ? props.addNote(newNote): alert("Enter Title");
-        setNewNote({title: "", content: ""});
-        event.preventDefault();
+        const handleClick = async ()=>{
+          console.log(newNote);
+          const myData = {
+            title: newNote.title, 
+            content: newNote.content
+          }
+          const result = await fetch("http://localhost:3001/",{
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(myData)
+          })
+          const resultJson = await result.json()
+          console.log(resultJson);
     }
+    
+
+    // const handleClick = async (event)=>{
+    //     event.preventDefault()
+        
+    //     try {
+    //       console.log(newNote);
+    //         await axios.post("/", {
+    //            title:"newNote.title", 
+    //             content:"newNote.content" })
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
 
     function expand() {
       setIsExpanded(true)
@@ -30,7 +55,7 @@ function CreateArea(props) {
 
   return (
     <div>
-      <form className="create-note">
+      <form method="POST" className="create-note">
         {isExpanded && (<input 
             name="title" 
             placeholder="Title" 

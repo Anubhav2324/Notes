@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header>
       <ul>
-        <li><Link to="/home">Keeper</Link></li>
-        <li><Link className="about" to="/about">About</Link></li>
+        <li><a href="/home">Keeper</a></li>
+        <li><a className="about" href="/about">About</a></li>
       </ul>
     </header>
   );
